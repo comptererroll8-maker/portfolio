@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio de Walid Abdellaoui</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--pink:#FF2E9A;--pink2:#FF8AD1;--blue:#4D8DFF;--cyan:#00CFFF;--bg:#05060f;--bg1:#0a0b16;--bg2:#0f111c;--bg3:#151824;
+--b1:rgba(255,46,154,.12);--b2:rgba(255,46,154,.25);--dim:rgba(255,46,154,.08);--text:#c8cfdc;--text2:#6b7488;--text3:#3a4256;
+--mono:'IBM Plex Mono','Courier New',monospace;--sans:'IBM Plex Sans',sans-serif;--sb:250px}
+html{scroll-behavior:smooth}
+body{font-family:var(--mono);background:var(--bg);color:var(--text);overflow-x:hidden;
+background-image:linear-gradient(rgba(77,141,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(77,141,255,.04) 1px,transparent 1px);background-size:48px 48px}
+a{color:inherit;text-decoration:none}
+.sidebar{position:fixed;inset:0 auto 0 0;width:var(--sb);background:rgba(10,11,22,.97);border-right:1px solid var(--b1);z-index:500;display:flex;flex-direction:column}
+.logo{padding:26px 22px;border-bottom:1px solid var(--b1)}
+.logo small{font-size:.55rem;letter-spacing:4px;color:var(--pink);opacity:.7}
+.logo b{display:block;font-size:1rem;color:#fff;margin-top:6px}
+.logo span{font-size:.68rem;color:var(--text2)}
+.status{padding:12px 22px;border-bottom:1px solid var(--b1);font-size:.62rem;color:var(--text2);display:flex;gap:8px;align-items:center}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--pink);box-shadow:0 0 8px var(--pink)}
+nav{padding:14px 0}
+nav a{display:block;padding:10px 22px;font-size:.72rem;color:var(--text2);border-left:2px solid transparent;transition:.2s}
+nav a:hover,nav a.active{color:var(--pink);background:var(--dim);border-left-color:var(--pink)}
+.main{margin-left:var(--sb)}
+section{min-height:100vh;padding:80px 60px;border-bottom:1px solid var(--b1)}
+#home{display:flex;flex-direction:column;justify-content:center}
+.prompt{font-size:.78rem;color:var(--pink);margin-bottom:8px}
+.prompt::before{content:'~/portfolio $ ';color:var(--text2)}
+h1{font-size:clamp(2.4rem,7vw,5.6rem);color:#fff;letter-spacing:-3px;line-height:.98;background:linear-gradient(90deg,var(--blue),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{margin:18px 0 36px;font-size:.85rem;letter-spacing:3px;text-transform:uppercase;color:var(--text2)}
+.sub i{font-style:normal;color:var(--pink)}
+.stats{display:flex;margin-bottom:36px;flex-wrap:wrap}
+.stat{padding:16px 24px;border:1px solid var(--b1);text-align:center}
+.stat b{display:block;font-size:1.8rem;color:var(--pink)}
+.stat span{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--text2)}
+.btn{display:inline-block;padding:11px 20px;font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;border:1px solid var(--b2);margin:0 8px 8px 0;transition:.2s}
+.btn.p{background:linear-gradient(90deg,var(--blue),var(--pink));color:#000;font-weight:700;border:none}
+.btn:hover{border-color:var(--pink);color:var(--pink)}.btn.p:hover{color:#000;box-shadow:0 0 26px rgba(255,46,154,.4)}
+.eyebrow{font-size:.6rem;letter-spacing:3px;color:var(--text2);text-transform:uppercase;margin-bottom:20px}
+.eyebrow b{color:var(--pink);margin-right:10px}
+h2{font-size:clamp(2rem,4.5vw,3.4rem);color:#fff;letter-spacing:-1px;margin-bottom:40px}
+h2 em{font-style:normal;color:var(--pink)}
+.about{display:grid;grid-template-columns:1fr 320px;gap:50px}
+.about p{font-family:var(--sans);font-weight:300;line-height:1.9;margin-bottom:16px}
+.about strong{color:var(--pink);font-family:var(--mono)}
+.card{background:var(--bg1);border:1px solid var(--b1);padding:22px;font-size:.7rem}
+.card div{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--b1);gap:8px}
+.card div:last-child{border:0}.card span:first-child{color:var(--text3)}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px}
+.filters button{padding:7px 16px;font:.6rem var(--mono);letter-spacing:1.5px;text-transform:uppercase;background:var(--bg1);border:1px solid var(--b1);color:var(--text2);cursor:pointer}
+.filters button:hover,.filters button.on{border-color:var(--pink);color:var(--pink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1px;background:var(--b1);border:1px solid var(--b1)}
+.proj{background:var(--bg);padding:24px;display:block;border-left:3px solid transparent;transition:.2s}
+.proj:hover{background:var(--bg2);border-left-color:var(--pink)}
+.proj small{font-size:.58rem;color:var(--text3);letter-spacing:2px}
+.proj h3{color:#fff;font-size:1rem;margin:10px 0 8px}
+.proj p{font-family:var(--sans);font-size:.8rem;color:var(--text2);font-weight:300;line-height:1.6;margin-bottom:14px}
+.tag{display:inline-block;font-size:.56rem;letter-spacing:1.4px;text-transform:uppercase;padding:3px 7px;background:var(--bg3);color:var(--text2);border:1px solid var(--b1);margin:0 4px 4px 0}
+.skills{display:grid;grid-template-columns:180px 1fr;border:1px solid var(--b1)}
+.tabs{background:var(--bg1);border-right:1px solid var(--b1)}
+.tabs button{display:block;width:100%;text-align:left;padding:13px 16px;font:.68rem var(--mono);color:var(--text2);background:none;border:0;border-left:2px solid transparent;border-bottom:1px solid var(--b1);cursor:pointer}
+.tabs button:hover,.tabs button.on{color:var(--pink);background:var(--dim);border-left-color:var(--pink)}
+.panels{padding:24px}.panel{display:none}.panel.on{display:block}
+.grp{margin-bottom:22px}.grp h4{font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--pink);opacity:.7;margin-bottom:10px}
+.sk{display:inline-block;padding:5px 11px;font-size:.7rem;background:var(--bg2);border:1px solid var(--b1);margin:0 6px 6px 0;transition:.2s}
+.sk:hover{border-color:var(--pink);color:var(--pink)}.sk.b:hover{border-color:var(--blue);color:var(--blue)}
+.cert{background:var(--bg1);border:1px solid var(--b1);padding:24px;margin-bottom:12px}
+.cert h3{font-size:.8rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;color:var(--blue)}
+.cert a{display:flex;gap:12px;align-items:center;padding:9px 12px;border:1px solid var(--b1);margin-bottom:5px;font-size:.78rem;background:var(--bg)}
+.cert a:hover{border-color:var(--pink)}
+.cert a::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--pink);box-shadow:0 0 5px var(--pink)}
+.cert a.wip::before{background:var(--blue);box-shadow:0 0 5px var(--blue)}
+.cert a span{margin-left:auto;font-size:.58rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--pink)}
+.cert a.wip span{color:var(--blue)}
+.contact{max-width:580px}
+.contact p{font-family:var(--sans);font-size:1.05rem;color:var(--text2);font-weight:300;line-height:1.75;margin-bottom:30px}
+.contact p strong{color:#fff;font-family:var(--mono)}
+.contact a{display:flex;gap:16px;padding:15px 18px;border:1px solid var(--b1);background:var(--bg1);margin-bottom:2px;font-size:.78rem;transition:.25s}
+.contact a:hover{border-color:var(--pink);color:var(--pink);transform:translateX(6px)}
+.contact a b{text-transform:uppercase;letter-spacing:1px;font-size:.68rem}.contact a span{margin-left:auto;opacity:.65;font-size:.7rem}
+.veille{background:var(--bg1);border:1px solid var(--b1);padding:30px;max-width:580px;border-top:2px solid var(--blue)}
+.veille p{font-family:var(--sans);font-weight:300;line-height:1.75;color:var(--text2);margin-bottom:20px}
+footer{background:var(--bg1);border-top:1px solid var(--b1);padding:22px 60px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.62rem;color:var(--text3);letter-spacing:1px}
+footer b{color:var(--pink);font-weight:400}footer a{margin-left:16px;text-transform:uppercase}footer a:hover{color:var(--pink)}
+.burger{display:none;position:fixed;top:12px;left:12px;z-index:600;width:40px;height:40px;background:var(--bg1);border:1px solid var(--b2);color:var(--pink);font-size:1.2rem;cursor:pointer}
+@media(max-width:900px){
+.sidebar{transform:translateX(-100%);transition:.3s;width:250px}.sidebar.open{transform:none}
+.main{margin-left:0}.burger{display:block}section{padding:64px 20px}footer{padding:20px}
+.about{grid-template-columns:1fr}.skills{grid-template-columns:1fr}.tabs{display:flex;overflow-x:auto;border-right:0}.tabs button{white-space:nowrap;width:auto;border-left:0}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<button class="burger" id="burger" aria-label="Menu">☰</button>
+<aside class="sidebar" id="sidebar">
+  <div class="logo"><small>PORTFOLIO // 2026</small><b>Walid ABDELLAOUI</b><span>Étudiant en Informatique</span></div>
+  <div class="status"><div class="dot"></div><span>Disponible — BTS SIO</span></div>
+  <nav>
+    <a href="#home" class="active">▸ ACCUEIL</a><a href="#about">◈ À PROPOS</a><a href="#projects">◇ PROJETS</a>
+    <a href="#skills">◈ COMPÉTENCES</a><a href="#certifications">◎ CERTIFICATIONS</a><a href="#contact">◇ CONTACT</a><a href="#veille">▸ VEILLE</a>
+  </nav>
+</aside>
+
+<main class="main">
+<section id="home">
+  <div class="prompt">whoami</div>
+  <h1>Walid ABDELLAOUI</h1>
+  <div class="sub"><i>Cybersécurité</i> // Réseaux // Développement</div>
+  <div class="stats">
+    <div class="stat"><b>15</b><span>Projets</span></div>
+    <div class="stat"><b>5</b><span>Années d'expérience</span></div>
+    <div class="stat"><b>5</b><span>Stages</span></div>
+  </div>
+  <div>
+    <a class="btn p" href="https://drive.google.com/file/d/1-ebyKW6WkK_Q399vLxjhLgsHNyfnISzN/view?usp=drive_link" target="_blank" rel="noopener">↓ CV.pdf</a>
+    <a class="btn" href="#projects">Voir les projets →</a>
+    <a class="btn" href="#contact">Contact</a>
+  </div>
+</section>
+
+<section id="about">
+  <div class="eyebrow"><b>01 //</b>À PROPOS</div>
+  <h2><em>Qui</em> suis-je ?</h2>
+  <div class="about">
+    <div>
+      <p>Je m'appelle <strong>Walid Abdellaoui</strong>, j'ai <strong>19 ans</strong> et je suis passionné par l'informatique, en particulier par la <strong>cybersécurité</strong> et les <strong>réseaux</strong>. Après avoir obtenu un baccalauréat professionnel CIEL mention Bien, je poursuis actuellement mes études en <strong>BTS SIO</strong>.</p>
+      <p>Je suis actuellement en <strong>deuxième année de BTS SIO option SISR</strong> au <strong>lycée Turgot à Paris</strong>. Je recherche une <strong>alternance pour septembre 2027</strong> afin d'intégrer la <strong>Licence Informatique Réseaux &amp; Cybersécurité</strong> au <strong>CNAM</strong>.</p>
+      <p>Curieux, motivé et rigoureux, je cherche à mettre en pratique mes connaissances au travers de projets concrets. Grâce à mes stages depuis la seconde, j'ai acquis de l'expérience en réseau, support technique et développement.</p>
+      <a class="btn" href="https://drive.google.com/file/d/1-ebyKW6WkK_Q399vLxjhLgsHNyfnISzN/view?usp=drive_link" target="_blank" rel="noopener">↓ CV</a>
+      <a class="btn" href="https://drive.google.com/file/d/1IkO_LNQpJjW6WP8ZynEVIfFj6xGZH2Is/view?usp=drive_link" target="_blank" rel="noopener">Tableau de synthèse</a>
+      <a class="btn" href="https://docs.google.com/document/d/1Xqmlyq3HdMoDPlLFgMYNzY2K6GHSRqGRHOId1Lzc7Rk/edit?usp=sharing" target="_blank" rel="noopener">Rapport de stage</a>
+    </div>
+    <div class="card">
+      <div><span>nom</span><span>Walid ABDELLAOUI</span></div>
+      <div><span>âge</span><span>19 ans</span></div>
+      <div><span>formation</span><span>BTS SIO</span></div>
+      <div><span>bac</span><span>CIEL — Mention Bien</span></div>
+      <div><span>localisation</span><span>France</span></div>
+      <div><span>statut</span><span style="color:var(--pink)">Disponible — BTS SIO</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="eyebrow"><b>02 //</b>PROJETS</div>
+  <h2><em>Projets</em> réalisés</h2>
+  <div class="filters">
+    <button class="on" data-f="all">Tous</button><button data-f="cybersec">Cybersécurité</button>
+    <button data-f="reseau">Administration Réseaux</button><button data-f="autres">Autres</button>
+  </div>
+  <div class="grid" id="grid">
+    <a class="proj" data-c="reseau" href="https://drive.google.com/drive/folders/1nSr680Dq915VTSAHsZ7OjMpFJP9n8gME?usp=drive_link" target="_blank" rel="noopener"><small>./proj_01</small><h3>Orchestrateur Minikube sous WSL</h3><p>Cluster Kubernetes local sous WSL, gestion des pods et services, automatisation des déploiements conteneurisés.</p><span class="tag">Minikube</span><span class="tag">Kubernetes</span><span class="tag">WSL</span></a>
+    <a class="proj" data-c="cybersec" href="https://drive.google.com/drive/folders/15esmbh-Kn7v8KQjk9uTjA0uA73sZyxmN?usp=sharing" target="_blank" rel="noopener"><small>./proj_02</small><h3>Naibed CTF</h3><p>Compétition CTF : sécurité web, reverse engineering, stéganographie et exploitation système en équipe.</p><span class="tag">CTF</span><span class="tag">Forensics</span><span class="tag">Web Sec</span></a>
+    <div class="proj" data-c="cybersec"><small>./proj_03</small><h3>Passe Ton Hack D'abord</h3><p>CTF organisé par le gouvernement français : cryptographie, sécurité web, reverse engineering.</p><span class="tag">CTF</span><span class="tag">Crypto</span><span class="tag">Teamwork</span></div>
+    <a class="proj" data-c="reseau" href="https://drive.google.com/file/d/1gmvlTDOX1dQZJpkUxlIuB2qg-8oVfj7B/view?usp=drive_link" target="_blank" rel="noopener"><small>./proj_04</small><h3>Agent OCS Inventory sous Debian</h3><p>Inventaire automatisé des postes, remontée des informations matérielles et logicielles vers le serveur central.</p><span class="tag">OCS Inventory</span><span class="tag">Debian</span></a>
+    <a class="proj" data-c="cybersec" href="https://drive.google.com/file/d/1kc7uqmF62StflPtqCsDlZka1cSjDldo9/view?usp=drive_link" target="_blank" rel="noopener"><small>./proj_05</small><h3>Honeypot OpenCanary</h3><p>Détection des intrusions réseau, journalisation des tentatives d'accès et analyse des attaquants.</p><span class="tag">Honeypot</span><span class="tag">IDS</span><span class="tag">Blue Team</span></a>
+    <a class="proj" data-c="cybersec" href="https://drive.google.com/file/d/1IMWPzwvT7od7Smh-RvENNLFjiozQfRO_/view?usp=drive_link" target="_blank" rel="noopener"><small>./proj_06</small><h3>Veille — Fuites de données</h3><p>Surveillance des fuites de données sur Internet et le dark web : méthodologie, sources OSINT, outils de détection.</p><span class="tag">Dark Web</span><span class="tag">OSINT</span></a>
+    <a class="proj" data-c="autres" href="https://aksil.alwaysdata.net" target="_blank" rel="noopener"><small>./proj_07</small><h3>Portfolio de Walid</h3><p>Site portfolio personnel au design terminal, en HTML/CSS/JS vanille.</p><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></a>
+    <a class="proj" data-c="cybersec" href="https://cyberouzou.github.io/ultimaxsearch/" target="_blank" rel="noopener"><small>./proj_08</small><h3>Ultimax Search</h3><p>Moteur de veille sur les compromissions d'adresses mail et IP : outil OSINT pour la détection de fuites.</p><span class="tag">OSINT</span><span class="tag">API</span><span class="tag">JS</span></a>
+    <a class="proj" data-c="reseau" href="https://drive.google.com/file/d/1xmAChhXQfcy63BzUCFyTC8AX9kWKvwBu/view?usp=sharing" target="_blank" rel="noopener"><small>./proj_09</small><h3>Réseau PME sécurisé — Cisco</h3><p>Réseau PME sous Packet Tracer : VLAN par service, routage inter-VLAN, ACL, pare-feu périmétrique.</p><span class="tag">Cisco</span><span class="tag">VLAN</span><span class="tag">ACL</span></a>
+    <a class="proj" data-c="cybersec" href="https://drive.google.com/file/d/1YsxyDqjxnUr07fQxOSpISvpuwOWh5Wsq/view" target="_blank" rel="noopener"><small>./proj_10</small><h3>Serveur web anonymisé via Tor</h3><p>Reverse proxy simplifié via Tor : anonymisation du trafic, exposition de services internes sans IP publique.</p><span class="tag">Tor</span><span class="tag">Proxy</span><span class="tag">Anonymat</span></a>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="eyebrow"><b>03 //</b>COMPÉTENCES</div>
+  <h2><em>Stack</em> technique</h2>
+  <div class="skills">
+    <div class="tabs">
+      <button class="on" data-t="p1">Infrastructure</button><button data-t="p2">Virtualisation</button>
+      <button data-t="p3">Programmation</button><button data-t="p4">Référentiel SISR</button>
+    </div>
+    <div class="panels">
+      <div class="panel on" id="p1">
+        <div class="grp"><h4>Réseau</h4><span class="sk">TCP/IP</span><span class="sk">Modèle OSI</span><span class="sk">LAN / WAN</span><span class="sk">VLAN</span><span class="sk">ACL</span><span class="sk">DMZ</span><span class="sk">Routage statique &amp; dynamique</span><span class="sk">DHCP</span><span class="sk">DNS</span><span class="sk">NAT</span></div>
+        <div class="grp"><h4>Cisco &amp; analyse</h4><span class="sk b">Switches &amp; Routeurs Cisco</span><span class="sk b">Packet Tracer</span><span class="sk b">Wireshark</span></div>
+        <div class="grp"><h4>Sécurité réseau</h4><span class="sk">VPN</span><span class="sk">Proxy</span><span class="sk">Pare-feu</span><span class="sk">pfSense</span><span class="sk">Réseau Tor</span><span class="sk">Opsec</span></div>
+        <div class="grp"><h4>Systèmes</h4><span class="sk b">Active Directory</span><span class="sk b">GPO / GPP</span><span class="sk b">Hardening Linux</span><span class="sk b">systemd</span><span class="sk b">OCS Inventory NG</span><span class="sk b">Docker</span></div>
+        <div class="grp"><h4>Détection &amp; OSINT</h4><span class="sk">Honeypot</span><span class="sk">IDS</span><span class="sk">Analyse de logs</span><span class="sk">OSINT</span><span class="sk">Threat Intelligence</span><span class="sk">Dark web</span></div>
+      </div>
+      <div class="panel" id="p2">
+        <div class="grp"><h4>Hyperviseurs</h4><span class="sk">VMware Workstation</span><span class="sk">VirtualBox</span><span class="sk">Proxmox VE</span></div>
+        <div class="grp"><h4>Conteneurs</h4><span class="sk b">Docker</span><span class="sk b">Kubernetes</span><span class="sk b">Minikube</span><span class="sk b">WSL2</span></div>
+        <div class="grp"><h4>Systèmes &amp; réseau virtualisé</h4><span class="sk">Ubuntu, Debian, Kali</span><span class="sk">Windows</span><span class="sk">NAT</span><span class="sk">Bridge</span><span class="sk">VLAN virtualisé</span></div>
+      </div>
+      <div class="panel" id="p3">
+        <div class="grp"><h4>Web &amp; backend</h4><span class="sk">HTML</span><span class="sk">CSS</span><span class="sk">JavaScript</span><span class="sk">PHP</span></div>
+        <div class="grp"><h4>Bases de données</h4><span class="sk b">SQL</span><span class="sk b">Cypher (Neo4j)</span></div>
+        <div class="grp"><h4>Scripting</h4><span class="sk">Bash</span><span class="sk">Batch</span><span class="sk">Python</span><span class="sk">APIs REST</span></div>
+        <div class="grp"><h4>Sécurité offensive (CTF)</h4><span class="sk">Pentest</span><span class="sk">Reverse engineering</span><span class="sk">XSS, SQLi</span><span class="sk">Forensics</span><span class="sk">C++</span></div>
+      </div>
+      <div class="panel" id="p4">
+        <div class="grp"><h4>Services &amp; systèmes</h4><span class="sk">Active Directory</span><span class="sk">MariaDB</span><span class="sk">Nextcloud</span><span class="sk">GPO</span><span class="sk">WDS</span><span class="sk">Scripts d'administration</span></div>
+        <div class="grp"><h4>Sécurité &amp; réseau</h4><span class="sk b">pfSense</span><span class="sk b">IDS/IPS (Suricata)</span><span class="sk b">Chiffrement</span><span class="sk b">Multi-périmètres</span><span class="sk b">WireGuard</span><span class="sk b">SSH / RDP</span></div>
+        <div class="grp"><h4>Supervision &amp; parc</h4><span class="sk">GLPI</span><span class="sk">ntopng</span><span class="sk">Wireshark</span><span class="sk">Puppet</span><span class="sk">Zabbix</span></div>
+        <div class="grp"><h4>Continuité</h4><span class="sk b">Sauvegarde</span><span class="sk b">Haute disponibilité</span><span class="sk b">RAID</span><span class="sk b">Répartition de charge (HAProxy)</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="eyebrow"><b>04 //</b>CERTIFICATIONS</div>
+  <h2><em>Certifications</em> &amp; badges</h2>
+  <div class="cert"><h3>Cisco — Networking Academy</h3>
+    <a href="https://www.credly.com/badges/c31892e4-f381-4f0f-bc84-9209b2a68066/public_url" target="_blank" rel="noopener">Computer Hardware Basics<span>Obtenu</span></a>
+    <a href="https://www.credly.com/badges/2f3cbd76-3c16-48ae-9a0c-aab3274ffd79" target="_blank" rel="noopener">Introduction to Cybersecurity<span>Obtenu</span></a>
+    <a href="https://www.credly.com/badges/cbaac2dd-8a61-45aa-93f5-ed604664deda" target="_blank" rel="noopener">Introduction to Packet Tracer<span>Obtenu</span></a>
+    <a href="https://www.credly.com/badges/d0d1bf6a-d4bb-4a94-979f-9a4b7d120d74" target="_blank" rel="noopener">Networking Basics<span>Obtenu</span></a>
+    <a href="https://www.credly.com/badges/3f1ca150-1f06-4f9b-a852-fb296b18b165" target="_blank" rel="noopener">Networking Devices and Initial Configuration<span>Obtenu</span></a>
+    <a href="https://www.credly.com/badges/9619b222-e303-42c8-8181-4c4baa21d051" target="_blank" rel="noopener">Network Defense<span>Obtenu</span></a>
+    <a href="https://www.credly.com/badges/0ef37615-b8d8-4d84-8e8c-8a43af851997" target="_blank" rel="noopener">Ethical Hacker<span>Obtenu</span></a>
+    <a class="wip" href="#certifications">CCNA<span>En cours</span></a>
+    <a class="wip" href="#certifications">CyberOps Associate<span>En cours</span></a>
+  </div>
+  <div class="cert"><h3>CNIL</h3>
+    <a href="https://drive.google.com/file/d/1WFIK2g6xH_WoWJm01_m0I51Nk7WKBa1L/view?usp=drive_link" target="_blank" rel="noopener">Module 1 — RGPD et notions clés<span>Obtenu</span></a>
+    <a href="https://drive.google.com/file/d/1Dk5Xpx-dIRWdRWgySe3H2myS9MUn_h0M/view?usp=drive_link" target="_blank" rel="noopener">Module 2 — Principes de la protection des données<span>Obtenu</span></a>
+    <a href="https://drive.google.com/file/d/15rLP2bw7QyTgrwFitAZXm_ZhM9GYyj1p/view?usp=drive_link" target="_blank" rel="noopener">Module 3 — Responsabilités des acteurs<span>Obtenu</span></a>
+    <a href="https://drive.google.com/file/d/1DBa0oZm0mBY6zbHyjoPj0AzBEoMqCQgM/view?usp=drive_link" target="_blank" rel="noopener">Module 4 — DPO et outils de conformité<span>Obtenu</span></a>
+  </div>
+  <div class="cert"><h3>Neo4j</h3>
+    <a href="https://drive.google.com/file/d/12I0tQCo91grG39Tq_oa7rW75_3luI0VM/view?usp=drive_link" target="_blank" rel="noopener">Neo4j Certified Professional<span>Obtenu</span></a>
+  </div>
+  <a class="btn" href="https://drive.google.com/drive/folders/1YLRcKBjjzZSeD6GYC5ytgZjN9b-zAm9r?usp=drive_link" target="_blank" rel="noopener">Consulter toutes mes certifications</a>
+</section>
+
+<section id="contact">
+  <div class="eyebrow"><b>05 //</b>CONTACT</div>
+  <h2><em>Me</em> contacter</h2>
+  <div class="contact">
+    <p>Étudiant en BTS SIO, <strong>disponible</strong> pour stages, alternances ou collaborations en <strong>cybersécurité</strong> et <strong>réseaux</strong>.</p>
+    <a href="https://www.linkedin.com/in/aksil-alem" target="_blank" rel="noopener"><b>LinkedIn</b><span>aksil-alem</span></a>
+    <a href="mailto:aksil.alem.pro@gmail.com"><b>Email</b><span>aksil.alem.pro@gmail.com</span></a>
+    <a href="https://github.com/cyberouzou" target="_blank" rel="noopener"><b>GitHub</b><span>cyberouzou</span></a>
+  </div>
+</section>
+
+<section id="veille">
+  <div class="eyebrow"><b>06 //</b>VEILLE</div>
+  <h2><em>Veille</em> technologique</h2>
+  <div class="veille">
+    <p>Suivi régulier de l'actualité en cybersécurité, nouvelles vulnérabilités, évolutions des protocoles réseau et tendances du secteur informatique.</p>
+    <a class="btn" href="https://drive.google.com/file/d/1IMWPzwvT7od7Smh-RvENNLFjiozQfRO_/view?usp=drive_link" target="_blank" rel="noopener">Consulter ma veille</a>
+  </div>
+</section>
+
+<footer>
+  <div>&copy; 2026 <b>Portfolio de Walid</b> — Walid Abdellaoui</div>
+  <div><a href="#home">Accueil</a><a href="#projects">Projets</a></div>
+</footer>
+</main>
+
+<script>
+const $=(s,r=document)=>[...r.querySelectorAll(s)];
+$('.tabs button').forEach(b=>b.onclick=()=>{
+  $('.tabs button').forEach(x=>x.classList.remove('on'));$('.panel').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');document.getElementById(b.dataset.t).classList.add('on');
+});
+$('.filters button').forEach(b=>b.onclick=()=>{
+  if(b.dataset.f==='autres'){window.open('https://drive.google.com/drive/folders/1SNFu8LaviI4DAQuD-l6epQGXTptECQlj?usp=drive_link','_blank','noopener');return;}
+  $('.filters button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  $('.proj').forEach(c=>c.style.display=(b.dataset.f==='all'||c.dataset.c===b.dataset.f)?'block':'none');
+});
+const sb=document.getElementById('sidebar');
+document.getElementById('burger').onclick=()=>sb.classList.toggle('open');
+$('nav a').forEach(a=>a.onclick=()=>sb.classList.remove('open'));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
+  $('nav a').forEach(n=>n.classList.toggle('active',n.getAttribute('href')==='#'+e.target.id));}}),{threshold:.35});
+$('section[id]').forEach(s=>io.observe(s));
+</script>
+</body>
+</html>
